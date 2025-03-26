@@ -1,0 +1,9 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+}
+.carousel-image {
+  width: 100%; /* Ensures the image spans the full width of the carousel */
+  height: 550px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensures the image scales properly without distortion */
+}
