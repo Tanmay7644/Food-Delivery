@@ -8,10 +8,10 @@ const Carousel = () => {
             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-caption " style={{zIndex:5}}>
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success bg-success text-white" type="submit">Search</button>
-                    </form>
+                        <form className="d-flex">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <button className="btn btn-outline-success bg-success text-white" type="submit">Search</button>
+                        </form>
                     </div>
                     <div className="carousel-item active">
                         <img src={image1} className="d-block w-100 carousel-image" alt="..." style={{filter:"brightness(30%"}}/>
