@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background color */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh; /* Full viewport height for vertical centering */
+    border: 2px solid #ccc; /* Light gray border */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* White background for the form */
+    width: 400px; /* Fixed width for the form */
+    /* margin: auto; Center the container horizontally */
+    margin-top: 200px;
+}
+
+form {
+    width: 100%; /* Form takes full width of the container */
+    /* margin-top: 400px; */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Add spacing between form fields */
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block; /* Ensure the label is above the input */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+small {
+    font-size: 12px;
+    color: #6c757d; /* Muted text color */
+}

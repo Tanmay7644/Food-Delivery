@@ -8,6 +8,7 @@ import { BrowserRouter as Router , Route,Routes } from 'react-router-dom'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+import Signup from './components/Signup.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/createUser" element={<Signup/>} />
       </Routes>
     </Router>
   )

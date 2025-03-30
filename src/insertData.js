@@ -12,6 +12,7 @@ async function insertData() {
         const collection2=database.collection('FoodCategory');
 
         // Clear existing data
+
         await collection1.deleteMany({});
         await collection2.deleteMany({});
 
@@ -23,7 +24,6 @@ async function insertData() {
 
         await collection2.insertMany(foodCategoryData);
         await collection1.insertMany(foodData);
-
         console.log('Data inserted successfully');
     }
     catch(error){
