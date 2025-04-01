@@ -8,11 +8,6 @@ const userSchema=mongoose.Schema({
         required:true
     },
 
-    location:{
-        type:String,
-        required:true
-    },
-
     email:{
         type:String,
         required:true
@@ -21,11 +16,6 @@ const userSchema=mongoose.Schema({
     password:{
         type:String,
         required:true
-    },
-
-    data:{
-        type:Date,
-        default:Date.now
     }
 })
 

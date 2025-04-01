@@ -11,9 +11,9 @@ import User from '../models/User.js';
 import { body, validationResult } from 'express-validator';
 
 Router.post('/createuser',
-    body('email','Incorrect Email').isEmail(),
+    body('email', 'Incorrect Email').isEmail(),
     body('name').isLength({ min: 3 }),
-    body('password','Passwor must be 5 caharacters long').isLength({ min: 5 }),
+    body('password', 'Password must be 5 caharacters long').isLength({ min: 5 }),
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -22,7 +22,6 @@ Router.post('/createuser',
         try {
             await User.create({
                 name: req.body.name,
-                location: req.body.location,
                 email: req.body.email,
                 password: req.body.password
             })
@@ -35,4 +34,33 @@ Router.post('/createuser',
         }
     })
 
+
+Router.post('/loginuser',
+    body('email', 'Incorrect Email').isEmail(),
+    body('password', 'Password must be 5 caharacters long').isLength({ min: 5 }),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        let email = req.body.email;
+        try {
+
+            let userData = await User.findOne({ email })
+
+            if (!userData) {
+                return res.status(400).json({ error: "Invalid credentials" })
+            }
+
+            if (userData.password !== req.body.password) {
+                return res.status(400).json({ error: "Invalid credentials" })
+            }
+
+            return res.json({ success: true });
+        } catch (error) {
+            console.log(error);
+            res.json({ success: false });
+        }
+    })
 export default Router;
+

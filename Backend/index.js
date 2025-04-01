@@ -1,20 +1,27 @@
-import express from 'express'
+import express from 'express';
+import cors from 'cors';
+import createUser from './Routes/CreateUser.js';
+import mongoose from 'mongoose';
 import connectDB from './db.js'
-import createUser from './Routes/CreateUser.js'
+const app = express();
+const port = 5000;
 
-const app = express()
-const port = 5000
-app.use(express.json()) // this is used to parse the json data from the request body
+await connectDB;
+// Enable CORS for frontend
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// Middleware
+app.use(express.json());
 
-app.use('/api',createUser);
-// from this endpoint is localHost:5000/api/createuser
-// this endpoint is used to create user in the database
+// Test API Route
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
 
+// User Signup Route
+app.use('/api', createUser);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// Start Server
+app.listen(port, async() => {
+    console.log(`Backend running on http://localhost:${port}`);
+});
