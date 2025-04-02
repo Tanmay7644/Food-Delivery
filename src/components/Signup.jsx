@@ -36,7 +36,7 @@ const Signup = () => {
     };
 
     return (
-        <div className='container'>
+        <div className='container1'>
             <form onSubmit={handleSignup}>
                 <div className="form-group">
                     <label htmlFor="name" className='form-label'>Name</label>

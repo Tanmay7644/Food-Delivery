@@ -1,4 +1,7 @@
 import express from 'express';
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken';
+const secret="aB3dE5gH7jK9mN1pQ2rT4vX6zY8wL0CqV";
 const Router = express.Router();
 // here we are importing model of user
 // model is a wrapper of schema
@@ -19,11 +22,13 @@ Router.post('/createuser',
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        const salt=await bcrypt.genSalt(10);
+        let setPassword=await bcrypt.hash(req.body.password,salt);
         try {
             await User.create({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: setPassword
             })
             console.log("Data inserted successfully");
             res.json({ success: true });
@@ -51,12 +56,18 @@ Router.post('/loginuser',
             if (!userData) {
                 return res.status(400).json({ error: "Invalid credentials" })
             }
-
-            if (userData.password !== req.body.password) {
+            const checkPassword=bcrypt.compare(req.body.password,userData.password)
+            if (!checkPassword) {
                 return res.status(400).json({ error: "Invalid credentials" })
             }
 
-            return res.json({ success: true });
+            const data={
+                user:{
+                    id:userData.id
+                }
+            }
+            const authToken=jwt.sign(data,secret);
+            return res.json({ success: true,authToken:authToken });
         } catch (error) {
             console.log(error);
             res.json({ success: false });

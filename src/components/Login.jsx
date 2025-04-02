@@ -21,6 +21,8 @@ const Login = () => {
 
       if (data.success) {
         alert("Login Successful!");
+        localStorage.setItem("authToken",data.authToken);
+        console.log(localStorage.getItem("authToken"));
         navigate("/");
       } else {
         alert("Login Failed. Check your details.");
@@ -36,7 +38,7 @@ const Login = () => {
   };
   return (
     <div>
-      <div className='container'>
+      <div className='container1'>
             <form onSubmit={handleLogin}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1" className='form-label'>Email address</label>
