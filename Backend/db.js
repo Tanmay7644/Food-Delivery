@@ -7,15 +7,20 @@ const connectDB = async () => {
 
 
         // Reading and parsing the data from the JSON file
-        const fetchedData=await mongoose.connection.db.collection('Food').find({}).toArray();
-        // console.log("Fetched Data:", fetchedData);
+        
+        const fetchedData =await mongoose.connection.db.collection('Food').find({}).toArray();
+        const fetchedCategory =await mongoose.connection.db.collection('FoodCategory').find({}).toArray();
 
+        global.foodItems=fetchedData;
+        global.foodCategory=fetchedCategory;
+        // console.log(global.foodItems); 
+        // console.log(global.foodCategory);
+        console.log("Data fetched successfully");
 
     } catch (error) {
         console.error("MongoDB connection error:", error);
     }
 }
 
-connectDB();
 
-export default connectDB();
+export default connectDB;
