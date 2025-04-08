@@ -21,6 +21,7 @@ const Login = () => {
 
       if (data.success) {
         alert("Login Successful!");
+        localStorage.setItem("userEmail",details.email);
         localStorage.setItem("authToken",data.authToken);
         console.log(localStorage.getItem("authToken"));
         navigate("/");
